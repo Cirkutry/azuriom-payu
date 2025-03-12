@@ -1,0 +1,11 @@
+{
+    "name": "azuriom/payuupipayment",
+    "type": "azuriom-plugin",
+    "description": "Add PayU UPI to the shop's payment methods.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Azuriom\\Plugin\\PayUUPIPayment\\": "src/"
+        }
+    }
+}
