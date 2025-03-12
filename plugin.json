@@ -1,0 +1,17 @@
+{
+    "id": "payuupipayment",
+    "name": "PayUUPIPayment",
+    "description": "Add PayU UPI to the shop's payment methods.",
+    "version": "1.0.0",
+    "url": "https://github.com/Cirkutry/azuriom-payu/",
+    "authors": [
+        "Kre0lidge"
+    ],
+    "providers": [
+        "\\Azuriom\\Plugin\\PayUUPIPayment\\Providers\\PayUUPIPaymentServiceProvider"
+    ],
+    "dependencies": {
+        "shop": "^1.0.0"
+    },
+    "azuriom_api": "1.0.0"
+}
