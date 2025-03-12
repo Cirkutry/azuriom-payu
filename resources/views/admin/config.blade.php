@@ -16,13 +16,6 @@
         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
         @enderror
     </div>
-
-    <div class="mb-3">
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="testModeInput" name="test-mode" @if(old('test-mode', $gateway->data['test-mode'] ?? false)) checked @endif>
-            <label class="form-check-label" for="testModeInput">Enable test mode</label>
-        </div>
-    </div>
 </div>
 
 <div class="alert alert-info">
@@ -33,4 +26,34 @@
             'ipn' => '<code>'.route('shop.payments.notification', 'payu-upi').'</code>',
         ])
     </p>
+    <p>
+        <i class="bi bi-info-circle"></i>
+        To switch between test and production modes, you need to modify the 'USE_TEST_MODE' constant in the PayUUPIMethod.php file:
+        <ul>
+            <li>For test mode: Set <code>USE_TEST_MODE = true</code></li>
+            <li>For production mode: Set <code>USE_TEST_MODE = false</code></li>
+        </ul>
+    </p>
+</div>
+
+<div class="alert alert-warning">
+    <p>
+        <i class="bi bi-exclamation-triangle"></i>
+        <strong>Known Issues with PayU Sandbox:</strong>
+    </p>
+    <p>
+        The PayU sandbox environment may occasionally experience timeouts or connection issues. If this happens, you can try:
+    </p>
+    <ol>
+        <li>
+            Using one of the alternative sandbox URLs by modifying the <code>getTestUrl()</code> method call in PayUUPIMethod.php:
+            <ul>
+                <li><code>getTestUrl(0)</code> - Primary: <code>https://test.payu.in/_payment</code></li>
+                <li><code>getTestUrl(1)</code> - Alternative: <code>https://sandboxsecure.payu.in/_payment</code></li>
+                <li><code>getTestUrl(2)</code> - PayUMoney: <code>https://test.payumoney.com/payment</code></li>
+            </ul>
+        </li>
+        <li>Check if PayU's sandbox servers are currently available</li>
+        <li>Consider testing with the production URL if the sandbox continues to have issues</li>
+    </ol>
 </div>
